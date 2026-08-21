@@ -74,7 +74,13 @@ export default function Home() {
             href="/windows"
             className="border rounded-xl p-8 bg-white text-center hover:shadow-md transition"
           >
-            <div className="text-4xl mb-3">🪟</div>
+            <div className="flex justify-center mb-3">
+              <img
+                src="https://i.blogs.es/e2d0a8/windows/500_333.webp"
+                alt="Windows"
+                className="h-12 w-auto object-contain"
+              />
+            </div>
             <h3 className="text-xl font-semibold">Windows</h3>
             <p className="text-gray-500 text-sm mt-1">Explorar apps de Windows</p>
           </Link>
@@ -83,7 +89,13 @@ export default function Home() {
             href="/android"
             className="border rounded-xl p-8 bg-white text-center hover:shadow-md transition"
           >
-            <div className="text-4xl mb-3">🤖</div>
+            <div className="flex justify-center mb-3">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV2ZV-mb10qRzRp8pZELDucBQ6OF9z3i7xnl3j4Pbqziu7XZEiu6wnbhsw&s=10"
+                alt="Android"
+                className="h-12 w-auto object-contain"
+              />
+            </div>
             <h3 className="text-xl font-semibold">Android</h3>
             <p className="text-gray-500 text-sm mt-1">Explorar apps de Android</p>
           </Link>
