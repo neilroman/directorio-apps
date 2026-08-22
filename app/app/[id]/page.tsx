@@ -64,18 +64,18 @@ export default function AppDetallePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-400">Cargando...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
+        <p className="text-zinc-500">Cargando...</p>
       </div>
     );
   }
 
   if (notFound || !app) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
         <div className="text-center">
-          <p className="text-gray-500 mb-4">Esta app no existe o fue eliminada.</p>
-          <Link href="/" className="text-blue-600 hover:underline">
+          <p className="text-zinc-400 mb-4">Esta app no existe o fue eliminada.</p>
+          <Link href="/" className="text-blue-400 hover:underline">
             Volver al inicio
           </Link>
         </div>
@@ -84,19 +84,19 @@ export default function AppDetallePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="border-b bg-white">
+    <div className="min-h-screen bg-[#0a0a0a]">
+      <header className="border-b border-white/5 bg-[#0a0a0a]">
         <div className="max-w-3xl mx-auto px-4 py-4">
-          <Link href={`/${app.plataforma.toLowerCase()}`} className="text-sm text-gray-500 hover:text-gray-800">
+          <Link href={`/${app.plataforma.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white">
             ← Volver a {app.plataforma}
           </Link>
         </div>
       </header>
 
       <main className="max-w-3xl mx-auto px-4 py-10">
-        <div className="bg-white border rounded-xl p-8">
+        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8">
           <div className="flex items-start gap-4 mb-6">
-            <div className="w-20 h-20 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden shrink-0">
+            <div className="w-20 h-20 rounded-xl bg-zinc-800 flex items-center justify-center overflow-hidden shrink-0">
               {app.iconoUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -114,26 +114,26 @@ export default function AppDetallePage() {
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full font-medium">
+                <span className="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded-full font-medium">
                   {app.categoria}
                 </span>
-                <span className="text-xs text-gray-400">{app.plataforma}</span>
+                <span className="text-xs text-zinc-500">{app.plataforma}</span>
               </div>
-              <h1 className="text-2xl font-bold">{app.nombre}</h1>
-              <p className="text-gray-500 text-sm mt-1">{app.descripcionCorta}</p>
+              <h1 className="text-2xl font-bold text-white">{app.nombre}</h1>
+              <p className="text-zinc-400 text-sm mt-1">{app.descripcionCorta}</p>
             </div>
           </div>
 
           <button
             onClick={handleDescargar}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition mb-8"
+            className="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-600 transition mb-8"
           >
             Descargar / Ver enlace
           </button>
 
           {app.capturas && app.capturas.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-3">Capturas de pantalla</h2>
+              <h2 className="text-lg font-semibold mb-3 text-white">Capturas de pantalla</h2>
               <div className="flex gap-3 overflow-x-auto pb-2">
                 {app.capturas.map((url, i) => (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -141,7 +141,7 @@ export default function AppDetallePage() {
                     key={i}
                     src={url}
                     alt={`Captura ${i + 1}`}
-                    className="h-48 w-auto rounded-lg border shrink-0 object-cover"
+                    className="h-48 w-auto rounded-lg border border-zinc-700 shrink-0 object-cover"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = "none";
                     }}
@@ -152,30 +152,30 @@ export default function AppDetallePage() {
           )}
 
           <div className="prose prose-sm max-w-none mb-8">
-            <h2 className="text-lg font-semibold mb-2">Descripción</h2>
-            <p className="whitespace-pre-line text-gray-700">{app.descripcionLarga}</p>
+            <h2 className="text-lg font-semibold mb-2 text-white">Descripción</h2>
+            <p className="whitespace-pre-line text-zinc-300">{app.descripcionLarga}</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 text-sm border-t pt-6">
+          <div className="grid grid-cols-2 gap-4 text-sm border-t border-zinc-800 pt-6">
             {app.version && (
               <div>
-                <span className="text-gray-400">Versión</span>
-                <p className="font-medium">{app.version}</p>
+                <span className="text-zinc-500">Versión</span>
+                <p className="font-medium text-white">{app.version}</p>
               </div>
             )}
             {app.requisitos && (
               <div>
-                <span className="text-gray-400">Requisitos</span>
-                <p className="font-medium">{app.requisitos}</p>
+                <span className="text-zinc-500">Requisitos</span>
+                <p className="font-medium text-white">{app.requisitos}</p>
               </div>
             )}
             <div>
-              <span className="text-gray-400">Publicado por</span>
-              <p className="font-medium">{app.autorEmail}</p>
+              <span className="text-zinc-500">Publicado por</span>
+              <p className="font-medium text-white">{app.autorEmail}</p>
             </div>
             <div>
-              <span className="text-gray-400">Descargas</span>
-              <p className="font-medium">{app.clicks || 0}</p>
+              <span className="text-zinc-500">Descargas</span>
+              <p className="font-medium text-white">{app.clicks || 0}</p>
             </div>
           </div>
 
@@ -184,7 +184,7 @@ export default function AppDetallePage() {
               {app.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
+                  className="text-xs bg-zinc-800 text-zinc-300 px-2 py-1 rounded-full"
                 >
                   #{tag}
                 </span>
