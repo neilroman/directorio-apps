@@ -48,29 +48,29 @@ export default function PlataformaPage() {
 
   if (!plataforma) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Plataforma no válida.</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
+        <p className="text-zinc-400">Plataforma no válida.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="border-b bg-white">
+    <div className="min-h-screen bg-[#0a0a0a]">
+      <header className="border-b border-white/5 bg-[#0a0a0a]">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-sm text-gray-500 hover:text-gray-800">
+          <Link href="/" className="text-sm text-zinc-400 hover:text-white">
             ← Volver
           </Link>
-          <h1 className="text-xl font-bold">Apps de {plataforma}</h1>
+          <h1 className="text-xl font-bold text-white">Apps de {plataforma}</h1>
           <div className="w-16" />
         </div>
       </header>
 
       <main className="max-w-5xl mx-auto px-4 py-10">
-        {loading && <p className="text-center text-gray-400">Cargando...</p>}
+        {loading && <p className="text-center text-zinc-500">Cargando...</p>}
 
         {!loading && apps.length === 0 && (
-          <p className="text-center text-gray-400">
+          <p className="text-center text-zinc-500">
             Todavía no hay apps publicadas en {plataforma}.
           </p>
         )}
@@ -80,9 +80,9 @@ export default function PlataformaPage() {
             <Link
               key={app.id}
               href={`/app/${app.id}`}
-              className="border rounded-xl p-5 bg-white hover:shadow-md transition flex gap-4"
+              className="border border-zinc-800 rounded-xl p-5 bg-zinc-900 hover:border-blue-500/40 transition flex gap-4"
             >
-              <div className="w-14 h-14 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden shrink-0">
+              <div className="w-14 h-14 rounded-lg bg-zinc-800 flex items-center justify-center overflow-hidden shrink-0">
                 {app.iconoUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -98,9 +98,9 @@ export default function PlataformaPage() {
                 )}
               </div>
               <div className="min-w-0">
-                <span className="text-xs text-blue-600 font-medium">{app.categoria}</span>
-                <h3 className="text-lg font-semibold mt-1 truncate">{app.nombre}</h3>
-                <p className="text-gray-500 text-sm mt-1 line-clamp-2">
+                <span className="text-xs text-blue-400 font-medium">{app.categoria}</span>
+                <h3 className="text-lg font-semibold mt-1 truncate text-white">{app.nombre}</h3>
+                <p className="text-zinc-400 text-sm mt-1 line-clamp-2">
                   {app.descripcionCorta}
                 </p>
               </div>
