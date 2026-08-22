@@ -51,20 +51,20 @@ export default function LoginPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <p className="text-gray-500">Cargando...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
+        <p className="text-zinc-500">Cargando...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="w-full max-w-sm bg-white border rounded-xl p-8 shadow-sm">
-        <h1 className="text-2xl font-bold mb-6 text-center">Iniciar sesión</h1>
+    <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
+      <div className="w-full max-w-sm bg-zinc-900 border border-zinc-800 rounded-xl p-8">
+        <h1 className="text-2xl font-bold mb-6 text-center text-white">Iniciar sesión</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-zinc-300 mb-1">
               Email
             </label>
             <input
@@ -73,12 +73,12 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={submitting}
-              className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-lg px-3 py-2 text-sm placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-zinc-300 mb-1">
               Contraseña
             </label>
             <input
@@ -87,40 +87,40 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               disabled={submitting}
-              className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-lg px-3 py-2 text-sm placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
           {error && (
-            <p className="text-sm text-red-600">{error}</p>
+            <p className="text-sm text-red-400">{error}</p>
           )}
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-blue-700 disabled:opacity-50"
+            className="w-full bg-blue-500 text-white py-2 rounded-lg text-sm font-medium hover:bg-blue-600 disabled:opacity-40"
           >
             {submitting ? "Entrando..." : "Entrar"}
           </button>
         </form>
 
         <div className="my-4 flex items-center gap-2">
-          <div className="flex-1 h-px bg-gray-200" />
-          <span className="text-xs text-gray-400">o</span>
-          <div className="flex-1 h-px bg-gray-200" />
+          <div className="flex-1 h-px bg-zinc-800" />
+          <span className="text-xs text-zinc-500">o</span>
+          <div className="flex-1 h-px bg-zinc-800" />
         </div>
 
         <button
           onClick={handleGoogle}
           disabled={submitting}
-          className="w-full border py-2 rounded-lg text-sm font-medium hover:bg-gray-50 disabled:opacity-50"
+          className="w-full border border-zinc-700 text-zinc-300 py-2 rounded-lg text-sm font-medium hover:bg-zinc-800 disabled:opacity-40"
         >
           Continuar con Google
         </button>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <p className="text-center text-sm text-zinc-500 mt-6">
           ¿No tienes cuenta?{" "}
-          <Link href="/registro" className="text-blue-600 hover:underline">
+          <Link href="/registro" className="text-blue-400 hover:underline">
             Regístrate
           </Link>
         </p>
