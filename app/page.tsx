@@ -7,41 +7,41 @@ export default function Home() {
   const { user, loading, logout, isAdmin } = useAuth();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0a0a]">
       {/* Barra superior */}
-      <header className="border-b bg-white">
+      <header className="border-b border-white/5 bg-[#0a0a0a]">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-bold">Directorio de Apps</h1>
+          <h1 className="text-xl font-bold text-white">Directorio de Apps</h1>
 
           <div className="flex items-center gap-3">
             {!loading && user && (
               <>
                 <Link
                   href="/publicar"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700"
+                  className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600"
                 >
                   Publicar app
                 </Link>
                 <Link
                   href="/mis-apps"
-                  className="text-sm text-gray-600 hover:text-gray-900"
+                  className="text-sm text-zinc-400 hover:text-white"
                 >
                   Mis apps
                 </Link>
                 {isAdmin && (
                   <Link
                     href="/admin"
-                    className="text-sm text-purple-600 font-medium hover:text-purple-800"
+                    className="text-sm text-blue-400 font-medium hover:text-blue-300"
                   >
                     Admin
                   </Link>
                 )}
-                <span className="text-sm text-gray-600 hidden sm:inline">
+                <span className="text-sm text-zinc-400 hidden sm:inline">
                   {user.email}
                 </span>
                 <button
                   onClick={logout}
-                  className="text-sm text-gray-500 hover:text-gray-800"
+                  className="text-sm text-zinc-400 hover:text-white"
                 >
                   Cerrar sesión
                 </button>
@@ -51,7 +51,7 @@ export default function Home() {
             {!loading && !user && (
               <Link
                 href="/login"
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600"
               >
                 Iniciar sesión
               </Link>
@@ -62,42 +62,42 @@ export default function Home() {
 
       {/* Contenido principal */}
       <main className="max-w-5xl mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold text-center mb-2">
+        <h2 className="text-5xl font-extrabold text-center mb-2 text-white">
           Encuentra y publica apps
         </h2>
-        <p className="text-gray-500 text-center mb-10">
+        <p className="text-zinc-500 text-center mb-10">
           Windows y Android, publicadas por la comunidad
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           <Link
             href="/windows"
-            className="border rounded-xl p-8 bg-white text-center hover:shadow-md transition"
+            className="border border-zinc-800 rounded-2xl overflow-hidden bg-zinc-900 text-center hover:border-blue-500/40 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] transition"
           >
-            <div className="flex justify-center mb-3">
-              <img
-                src="https://i.blogs.es/e2d0a8/windows/500_333.webp"
-                alt="Windows"
-                className="h-12 w-auto object-contain"
-              />
+            <img
+              src="https://i.blogs.es/e2d0a8/windows/500_333.webp"
+              alt="Windows"
+              className="w-full h-40 object-cover"
+            />
+            <div className="p-4">
+              <h3 className="text-xl font-semibold text-white">Windows</h3>
+              <p className="text-zinc-400 text-sm mt-1">Explorar apps de Windows</p>
             </div>
-            <h3 className="text-xl font-semibold">Windows</h3>
-            <p className="text-gray-500 text-sm mt-1">Explorar apps de Windows</p>
           </Link>
 
           <Link
             href="/android"
-            className="border rounded-xl p-8 bg-white text-center hover:shadow-md transition"
+            className="border border-zinc-800 rounded-2xl overflow-hidden bg-zinc-900 text-center hover:border-blue-500/40 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] transition"
           >
-            <div className="flex justify-center mb-3">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV2ZV-mb10qRzRp8pZELDucBQ6OF9z3i7xnl3j4Pbqziu7XZEiu6wnbhsw&s=10"
-                alt="Android"
-                className="h-12 w-auto object-contain"
-              />
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV2ZV-mb10qRzRp8pZELDucBQ6OF9z3i7xnl3j4Pbqziu7XZEiu6wnbhsw&s=10"
+              alt="Android"
+              className="w-full h-40 object-cover"
+            />
+            <div className="p-4">
+              <h3 className="text-xl font-semibold text-white">Android</h3>
+              <p className="text-zinc-400 text-sm mt-1">Explorar apps de Android</p>
             </div>
-            <h3 className="text-xl font-semibold">Android</h3>
-            <p className="text-gray-500 text-sm mt-1">Explorar apps de Android</p>
           </Link>
         </div>
       </main>
