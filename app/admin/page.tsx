@@ -155,59 +155,59 @@ export default function AdminPage() {
 
   if (!loading && !isAdmin) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">No tienes acceso a esta página.</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
+        <p className="text-zinc-400">No tienes acceso a esta página.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="border-b bg-white">
+    <div className="min-h-screen bg-[#0a0a0a]">
+      <header className="border-b border-white/5 bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-sm text-gray-500 hover:text-gray-800">
+          <Link href="/" className="text-sm text-zinc-400 hover:text-white">
             ← Volver
           </Link>
-          <h1 className="text-xl font-bold">Panel de administración</h1>
+          <h1 className="text-xl font-bold text-white">Panel de administración</h1>
           <div className="w-16" />
         </div>
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-10 space-y-10">
         {/* Buscar y moderar usuarios */}
-        <section className="bg-white border rounded-xl p-6">
-          <h2 className="text-lg font-semibold mb-4">Moderar usuario</h2>
+        <section className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+          <h2 className="text-lg font-semibold mb-4 text-white">Moderar usuario</h2>
           <div className="flex gap-2 mb-4">
             <input
               value={busqueda}
               onChange={(e) => setBusqueda(e.target.value)}
               placeholder="Correo del usuario"
-              className="flex-1 border rounded-lg px-3 py-2"
+              className="flex-1 bg-zinc-800 border border-zinc-700 text-white placeholder:text-zinc-500 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <button
               onClick={handleBuscarUsuario}
               disabled={buscando}
-              className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-50"
+              className="bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-40"
             >
               {buscando ? "Buscando..." : "Buscar"}
             </button>
           </div>
 
-          {mensaje && <p className="text-sm text-gray-500 mb-3">{mensaje}</p>}
+          {mensaje && <p className="text-sm text-zinc-400 mb-3">{mensaje}</p>}
 
           {usuarioEncontrado && (
-            <div className="border rounded-lg p-4 flex items-center justify-between flex-wrap gap-3">
+            <div className="border border-zinc-700 rounded-lg p-4 flex items-center justify-between flex-wrap gap-3 bg-zinc-800">
               <div>
-                <p className="font-medium">{usuarioEncontrado.email}</p>
-                <p className="text-xs text-gray-400">UID: {usuarioEncontrado.uid}</p>
+                <p className="font-medium text-white">{usuarioEncontrado.email}</p>
+                <p className="text-xs text-zinc-500">UID: {usuarioEncontrado.uid}</p>
                 {usuarioEncontrado.banned && (
-                  <span className="text-xs text-red-600 font-medium">Baneado</span>
+                  <span className="text-xs text-red-400 font-medium">Baneado</span>
                 )}
               </div>
               <div className="flex gap-2 flex-wrap">
                 <button
                   onClick={() => handleBanear(!usuarioEncontrado.banned)}
-                  className="text-sm border border-red-200 text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-50"
+                  className="text-sm border border-red-800/50 text-red-400 px-3 py-1.5 rounded-lg hover:bg-red-900/20"
                 >
                   {usuarioEncontrado.banned ? "Quitar baneo" : "Banear"}
                 </button>
@@ -216,13 +216,13 @@ export default function AdminPage() {
                   <>
                     <button
                       onClick={handleHacerAdmin}
-                      className="text-sm border border-blue-200 text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-50"
+                      className="text-sm border border-blue-800/50 text-blue-400 px-3 py-1.5 rounded-lg hover:bg-blue-900/20"
                     >
                       Nombrar admin
                     </button>
                     <button
                       onClick={handleQuitarAdmin}
-                      className="text-sm border border-gray-200 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+                      className="text-sm border border-zinc-700 text-zinc-400 px-3 py-1.5 rounded-lg hover:bg-zinc-700"
                     >
                       Quitar admin
                     </button>
@@ -235,32 +235,32 @@ export default function AdminPage() {
 
         {/* Todas las apps publicadas */}
         <section>
-          <h2 className="text-lg font-semibold mb-4">Todas las apps publicadas</h2>
+          <h2 className="text-lg font-semibold mb-4 text-white">Todas las apps publicadas</h2>
 
-          {cargandoApps && <p className="text-gray-400">Cargando...</p>}
+          {cargandoApps && <p className="text-zinc-500">Cargando...</p>}
 
           <div className="space-y-2">
             {apps.map((app) => (
               <div
                 key={app.id}
-                className="border rounded-lg p-4 bg-white flex items-center justify-between gap-3 flex-wrap"
+                className="border border-zinc-800 rounded-lg p-4 bg-zinc-900 flex items-center justify-between gap-3 flex-wrap"
               >
                 <div>
-                  <p className="font-medium">{app.nombre}</p>
-                  <p className="text-xs text-gray-400">
+                  <p className="font-medium text-white">{app.nombre}</p>
+                  <p className="text-xs text-zinc-500">
                     {app.plataforma} · {app.categoria} · {app.autorEmail}
                   </p>
                 </div>
                 <div className="flex gap-2">
                   <Link
                     href={`/app/${app.id}`}
-                    className="text-sm text-gray-500 hover:text-gray-800 px-3 py-1.5"
+                    className="text-sm text-zinc-400 hover:text-white px-3 py-1.5"
                   >
                     Ver
                   </Link>
                   <button
                     onClick={() => handleBorrarApp(app.id, app.nombre)}
-                    className="text-sm text-red-600 border border-red-200 px-3 py-1.5 rounded-lg hover:bg-red-50"
+                    className="text-sm text-red-400 border border-red-800/50 px-3 py-1.5 rounded-lg hover:bg-red-900/20"
                   >
                     Borrar
                   </button>
