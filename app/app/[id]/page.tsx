@@ -36,22 +36,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "App no encontrada | Directorio de Apps" };
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://directorio-apps.vercel.app";
+  const pageUrl = `${siteUrl}/app/${id}`;
+  const ogImage = app.iconoUrl
+    ? { url: app.iconoUrl, width: 512, height: 512, alt: app.nombre }
+    : { url: "/og-image.png", width: 1200, height: 630, alt: app.nombre };
+
   return {
     title: `${app.nombre} | Directorio de Apps`,
     description: app.descripcionCorta,
     openGraph: {
       title: app.nombre,
       description: app.descripcionCorta,
-      type: "article",
-      ...(app.iconoUrl && {
-        images: [{ url: app.iconoUrl, width: 512, height: 512, alt: app.nombre }],
-      }),
+      type: "website",
+      url: pageUrl,
+      siteName: "Directorio de Apps",
+      images: [ogImage],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: app.nombre,
       description: app.descripcionCorta,
-      ...(app.iconoUrl && { images: [app.iconoUrl] }),
+      images: [ogImage.url],
     },
   };
 }

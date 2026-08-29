@@ -23,13 +23,14 @@ export const metadata: Metadata = {
     description: "Publica y descubre apps para Windows y Android",
     type: "website",
     locale: "es_ES",
-    images: [{ url: "/favicon.ico", width: 48, height: 48, alt: "Directorio de Apps" }],
+    siteName: "Directorio de Apps",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Directorio de Apps" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Directorio de Apps",
     description: "Publica y descubre apps para Windows y Android",
-    images: ["/favicon.ico"],
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
