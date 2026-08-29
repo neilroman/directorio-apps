@@ -24,13 +24,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_ES",
     siteName: "Directorio de Apps",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Directorio de Apps" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Directorio de Apps",
     description: "Publica y descubre apps para Windows y Android",
-    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",

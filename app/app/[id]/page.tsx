@@ -38,9 +38,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://directorio-apps.vercel.app";
   const pageUrl = `${siteUrl}/app/${id}`;
-  const ogImage = app.iconoUrl
-    ? { url: app.iconoUrl, width: 512, height: 512, alt: app.nombre }
-    : { url: "/og-image.png", width: 1200, height: 630, alt: app.nombre };
 
   return {
     title: `${app.nombre} | Directorio de Apps`,
@@ -51,13 +48,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       url: pageUrl,
       siteName: "Directorio de Apps",
-      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: app.nombre,
       description: app.descripcionCorta,
-      images: [ogImage.url],
     },
   };
 }
